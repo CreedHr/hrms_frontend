@@ -1,0 +1,66 @@
+/* Design tokens — Dark Analytics.
+   Night is the default mode; day mode only overrides the surface palette. */
+:root,
+:root[data-mode='night'] {
+  --bg: #0a0f1e;
+  --fg: #eaf0ff;
+  --mut: #8b97b5;
+  --card: #111a30;
+  --bd: #1d2947;
+  --sb: #0d1426;
+  --ac: #2b9cf2;
+  --bt: #ffffff;
+  --sh: none;
+  --hover: #8888;
+  --tint: color-mix(in srgb, var(--ac) 16%, transparent);
+  --tint-soft: color-mix(in srgb, var(--ac) 9%, transparent);
+  --ac-glow: #2b9cf255;
+  --ac-halo: #2b9cf214;
+  --g: #059669;
+  --g-bg: #10b98120;
+  --y: #b45309;
+  --y-bg: #f59e0b20;
+  --r-tone: #dc2626;
+  --r-bg: #ef444420;
+  --up: #10b981;
+  --down: #f43f5e;
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --serif: 'Spectral', Georgia, serif;
+}
+
+:root[data-mode='day'] {
+  --bg: #eef3fb;
+  --fg: #0f1b33;
+  --mut: #5b6b8a;
+  --card: #ffffff;
+  --bd: #dde5f3;
+  --sb: #ffffff;
+  --sh: 0 4px 20px #1a2a5012;
+  --hover: #1a2a500d;
+  --g: #047857;
+  --g-bg: #10b9811f;
+  --y: #b45309;
+  --y-bg: #f59e0b1f;
+  --r-tone: #dc2626;
+  --r-bg: #ef44441a;
+  --up: #059669;
+  --down: #e11d48;
+}
+
+:root {
+  --r: 18px;
+  --rs: 12px;
+  --ff: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --tx: 14px;
+  /* chart / avatar palette, in order */
+  --c1: var(--ac);
+  --c2: #a78bfa;
+  --c3: #34d399;
+  --c4: #fb923c;
+  --c5: #f472b6;
+  --c6: #facc15;
+  /* layout */
+  --nav-w: 260px;
+  --nav-rail: 74px;
+  --top-h: 64px;
+}

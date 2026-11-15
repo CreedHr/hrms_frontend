@@ -1,0 +1,83 @@
+import { Banknote, Coins, Receipt, Wallet } from 'lucide-react';
+import { STATUS_ACTIVE, type ModuleConfig } from '@/features/modules/registry/types';
+
+export const payrollModules: ModuleConfig[] = [
+  {
+    key: 'salaryComponents',
+    path: '/salary-components',
+    title: 'Salary Components',
+    group: 'payroll',
+    icon: Coins,
+    idPrefix: 'SC-1',
+    statuses: STATUS_ACTIVE,
+    searchKeys: ['name', 'type', 'value', 'status'],
+    description: 'Earnings/deductions that make up a salary structure.',
+    fields: [
+      { key: 'name', label: 'Component', type: 'text', required: true, inTable: true },
+      { key: 'type', label: 'Type', type: 'select', options: ['Earning', 'Deduction'], inTable: true },
+      { key: 'calc', label: 'Calculation', type: 'select', options: ['Fixed', 'Percentage'], inTable: true },
+      { key: 'value', label: 'Value', type: 'number', inTable: true },
+      { key: 'status', label: 'Status', type: 'select', options: STATUS_ACTIVE },
+    ],
+  },
+  {
+    key: 'employeeSalaries',
+    path: '/employee-salaries',
+    title: 'Employee Salaries',
+    group: 'payroll',
+    icon: Wallet,
+    idPrefix: 'ES-1',
+    statuses: STATUS_ACTIVE,
+    searchKeys: ['employee', 'band', 'gross', 'status'],
+    description: 'Per-employee salary structures and bands.',
+    fields: [
+      { key: 'employee', label: 'Employee', type: 'text', required: true, inTable: true },
+      { key: 'band', label: 'Band', type: 'text', inTable: true },
+      { key: 'gross', label: 'Gross', type: 'money', inTable: true },
+      { key: 'effectiveFrom', label: 'Effective from', type: 'date', inTable: true },
+      { key: 'status', label: 'Status', type: 'select', options: STATUS_ACTIVE },
+    ],
+  },
+  {
+    key: 'payrollRuns',
+    path: '/payroll-runs',
+    title: 'Payroll Runs',
+    group: 'payroll',
+    icon: Banknote,
+    idPrefix: 'RUN-1',
+    statuses: ['Paid', 'Processing', 'Draft'],
+    searchKeys: ['period', 'month', 'status'],
+    extra: 'payrollRuns',
+    description: 'Monthly payroll runs with gross/net totals and close stepper.',
+    fields: [
+      { key: 'period', label: 'Period', type: 'text', required: true, inTable: true },
+      { key: 'month', label: 'Month', type: 'text', inTable: true },
+      { key: 'employees', label: 'Employees', type: 'number', inTable: true },
+      { key: 'gross', label: 'Gross', type: 'money', inTable: true },
+      { key: 'net', label: 'Net', type: 'money', inTable: true },
+      { key: 'status', label: 'Status', type: 'select', options: ['Paid', 'Processing', 'Draft'] },
+    ],
+  },
+  {
+    key: 'payroll',
+    path: '/payroll',
+    title: 'Payslips',
+    group: 'payroll',
+    icon: Receipt,
+    idPrefix: 'PR-1',
+    statuses: ['Paid', 'Pending', 'Processing'],
+    searchKeys: ['employee', 'month', 'status'],
+    extra: 'payroll',
+    description: 'Payslips with gross/net/deductions and downloadable detail.',
+    fields: [
+      { key: 'employee', label: 'Employee', type: 'text', required: true, inTable: true },
+      { key: 'month', label: 'Month', type: 'text', placeholder: '2026-10', inTable: true },
+      { key: 'gross', label: 'Gross', type: 'money', required: true, inTable: true },
+      { key: 'net', label: 'Net', type: 'money', required: true, inTable: true },
+      { key: 'deductions', label: 'Deductions', type: 'money', inTable: true },
+      { key: 'status', label: 'Status', type: 'select', options: ['Paid', 'Pending', 'Processing'] },
+    ],
+  },
+];
+
+export const payrollReferenceModules: ModuleConfig[] = [];
